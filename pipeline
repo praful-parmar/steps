@@ -24,7 +24,7 @@ pipeline{
         }
         stage('deploy'){
             steps{
-               sh './scripts/transfer_to_remote'
+               sh './scripts/transfer_to_remote $secret'
             }
         }
     }

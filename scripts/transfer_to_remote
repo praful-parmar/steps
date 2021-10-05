@@ -1,8 +1,8 @@
 #!/bin/bash
-
+pass=$1
 echo test > /tmp/.auth
 echo $BUILD_TAG >> /tmp/.auth
-echo pass >> /tmp/.auth
+echo $pass >> /tmp/.auth
 
 scp -i /home/praful/Downloads/ec22.pem /tmp/.auth ec2-user@3.134.253.0:/tmp/.auth
 scp -i /home/praful/Downloads/ec22.pem ./scripts/remote/export_var ec2-user@3.134.253.0:/tmp/export_var
