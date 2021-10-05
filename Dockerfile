@@ -10,7 +10,6 @@
 
 
 FROM openjdk:8-jre-alpine
-WORKDIR /app
-COPY --from=jaar  /app/target ./app
-CMD java -jar /app/*.jar
+COPY  /app.jar ./app.jar
+CMD java -jar app.jar
 
