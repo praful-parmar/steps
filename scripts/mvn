@@ -4,6 +4,6 @@ echo "***************************"
 echo "** Building jar ***********"
 echo "***************************"
 
-WORKSPACE=/home/jenkins/jenkins-data/jenkins_home/workspace/test
+WORKSPACE=/home/jenkins/jenkins-data/jenkins_home/workspace
 
 docker run --rm  -v  $WORKSPACE/scripts/app:/app -v /root/.m2/:/root/.m2/ -w /app maven:alpine "$@"
