@@ -1,8 +1,7 @@
 #!/bin/bash
 
 IMAGE="test"
-
-pass=$1
+$pass=$1
 
 echo "loggggginnnnnnnnnning in"
 docker login -u praful1997 -p $pass

@@ -1,5 +1,10 @@
 pipeline{
     agent any
+
+    environment {
+        secret = credentials('dockerhub')
+    }
+
     stages{
         stage('build'){
             steps{
@@ -8,12 +13,12 @@ pipeline{
         }
         stage('test'){
             steps{
-               sh 'mvn -B -DskipTests clean package test'
+               sh './scripts/mvn test'
             }
         }
         stage('push'){
             steps{
-                sh './scripts/push_img'
+                sh './scripts/push_img $secret'
             }
         }
         stage('deploy'){
