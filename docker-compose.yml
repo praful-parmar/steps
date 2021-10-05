@@ -2,5 +2,5 @@ version: '3'
 
 services:
   app:
-    image: "test" #:$BUILD_TAG"
+    image: "test:$BUILD_TAG"
     build: .
