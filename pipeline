@@ -1,7 +1,12 @@
 pipeline{
     agent any
     stages{
-        stage('test then build'){
+        stage('build'){
+            steps{
+               sh 'sudo docker-compose build --no-cache'
+            }
+        }
+        stage('build'){
             steps{
                sh 'docker-compose build --no-cache'
             }
