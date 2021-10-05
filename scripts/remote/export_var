@@ -1,0 +1,8 @@
+#!/bin/bash
+
+export image=$(sed -n '1p' /tmp/.auth)
+export BUILD_TAG=$(sed -n '2p' /tmp/.auth)
+export pass=$(sed -n '3p' /tmp/.auth)
+
+docker login -u praful1997 -p $pass
+cd ~/compose_file && docker-compose up -d

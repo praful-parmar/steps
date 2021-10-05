@@ -1,0 +1,10 @@
+#!/bin/bash
+
+echo test > /tmp/.auth
+echo $BUILD_TAG >> /tmp/.auth
+echo pass >> /tmp/.auth
+
+scp -i /home/praful/Downloads/ec22.pem /tmp/.auth ec2-user@3.134.253.0:/tmp/.auth
+scp -i /home/praful/Downloads/ec22.pem ./scripts/remote/export_var ec2-user@18.224.23.94:/tmp/export_var
+ssh -i /home/praful/Downloads/ec22.pem "/tmp/export_var"
+ 

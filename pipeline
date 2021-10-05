@@ -1,0 +1,20 @@
+pipeline{
+    agent any
+    stages{
+        stage('test then build'){
+            steps{
+               sh 'docker-compose build --no-cache'
+            }
+        }
+        stage('push'){
+            steps{
+                sh './scripts/push_img'
+            }
+        }
+        stage('deploy'){
+            steps{
+               sh './scripts/transfer_to_remote'
+            }
+        }
+    }
+}

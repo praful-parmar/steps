@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  app:
+    image: "test:$BUILD_TAG"
+    build: .
+    volumes:
+      - "/root/.m2/:/root/.m2/"

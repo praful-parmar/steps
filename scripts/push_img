@@ -1,0 +1,14 @@
+#!/bin/bash
+
+IMAGE="test"
+
+pass=$1
+
+echo "loggggginnnnnnnnnning in"
+docker login -u praful1997 -p $pass
+
+echo "taaaaaging"
+docker tag $IMAGE:$BUILD_TAG praful1997/$IMAGE:$BUILD_TAG
+
+echo "pushhhing image"
+docker push praful1997/$IMAGE:$BUILD_TAG    
