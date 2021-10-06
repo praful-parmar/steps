@@ -1,4 +1,4 @@
 version: '3'
 services:
   app:
-    image: "$image:$BUILD_TAG"
+    image: "praful1997/$image:$BUILD_TAG"
