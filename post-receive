@@ -8,7 +8,7 @@ fi
 IFS='/' read -ra REF <<< "${ref[2]}"
 branch="${REF[2]}"
 
-if [ $branch == "maim" ]; then
+if [[ $branch == "maim" ]]; then
 	curl -X POST http://localhost:8080/job/test/build?delay=0sec --user praful:Simform@123 -H 'Jenkins-Crumb:d2f89f70f1e28c70839823c7d7de6afc86a97df24d3626a9d5eee2a1cc18a3b412040ca66e672920940c35c323874d17b411d1d5e7b216a0b5dfbd14c47f96be'
 
 	if [ $? -eq 0 ]; then
