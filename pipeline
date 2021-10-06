@@ -11,10 +11,18 @@ pipeline{
                sh './scripts/mvn mvn -B -DskipTests clean package'
                sh './scripts/build'
             }
+            post {
+                success{
+                    archiveArtifacts artifacts: '*.jar', fingerprint: true
+                }
+            }
         }
         stage('test'){
             steps{
                sh './scripts/mvn mvn test'
+            }
+            always{
+                junit 'scripts/app/target/surefire-reports/*.xml'
             }
         }
         stage('push'){
