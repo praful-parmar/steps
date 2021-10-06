@@ -5,7 +5,6 @@ echo $BUILD_TAG >> /tmp/.auth
 echo $pass >> /tmp/.auth
 
 WORKSPACE=/var/lib/jenkins/workspace/test
-ssh -i /home/praful/Downloads/ec22.pem ec2-user@3.16.128.33 "chmod 777 /tmp/ -R"
 scp -i /home/praful/Downloads/ec22.pem /tmp/.auth ec2-user@3.16.128.33:/tmp/auth
 scp -i /home/praful/Downloads/ec22.pem $WORKSPACE/scripts/remote/export_var ec2-user@3.16.128.33:/tmp/export_var
 ssh -i /home/praful/Downloads/ec22.pem ec2-user@3.16.128.33 "/tmp/export_var"
