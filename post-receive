@@ -19,3 +19,23 @@ if [[ $branch == "maim" ]]; then
 
 fi
 
+
+#!/bin/bash
+TARGET="/home/praful/test"
+GIT_DIR="/home/praful/test"
+BRANCH="main"
+
+while read oldrev newrev ref
+do
+	# only checking out the master (or whatever branch you would like to deploy)
+	if [ "$ref" = "refs/heads/$BRANCH" ];
+	then
+		curl -X POST http://localhost:8080/job/test/build?delay=0sec --user praful:Simform@123 -H 'Jenkins-Crumb:d2f89f70f1e28c70839823c7d7de6afc86a97df24d3626a9d5eee2a1cc18a3b412040ca66e672920940c35c323874d17b411d1d5e7b216a0b5dfbd14c47f96be'
+
+		if [ $? -eq 0 ]; then
+			echo "*** Ok"
+		else
+			echo "*** Error"
+		fi
+	fi
+done

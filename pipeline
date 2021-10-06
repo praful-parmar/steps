@@ -15,6 +15,9 @@ pipeline{
                 success{
                     archiveArtifacts artifacts: '*.jar', fingerprint: true
                 }
+                failure {
+                    emailext body: 'build faiil', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
+                }
             }
         }
         stage('test'){
@@ -25,16 +28,30 @@ pipeline{
                 always{
                     junit 'scripts/app/target/surefire-reports/*.xml'
                 }
+                failure {
+                    emailext body: 'Test fail', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
+                }
             }
         }
         stage('push'){
             steps{
                 sh './scripts/push_img $secret'
             }
+            post{
+                failure {
+                    emailext body: 'push fail', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
+                }
+            }
+            
         }
         stage('deploy'){
             steps{
                sh './scripts/transfer_to_remote $secret'
+            }
+            post{
+                failure {
+                    emailext body: 'deploy fail', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
+                }
             }
         }
     }
