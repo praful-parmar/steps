@@ -21,8 +21,10 @@ pipeline{
             steps{
                sh './scripts/mvn mvn test'
             }
-            always{
-                junit 'scripts/app/target/surefire-reports/*.xml'
+            post{
+                always{
+                    junit 'scripts/app/target/surefire-reports/*.xml'
+                }
             }
         }
         stage('push'){
