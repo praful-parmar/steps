@@ -6,7 +6,7 @@ echo $pass >> /tmp/.auth
 
 WORKSPACE=/var/lib/jenkins/workspace/test
 
-scp -i /home/praful/Downloads/ec22.pem /tmp/.auth ec2-user@3.16.128.33:/tmp/.auth
+scp -i /home/praful/Downloads/ec22.pem /tmp/.auth ec2-user@3.16.128.33:/tmp/auth
 scp -i /home/praful/Downloads/ec22.pem $WORKSPACE/scripts/remote/export_var ec2-user@3.16.128.33:/tmp/export_var
 ssh -i /home/praful/Downloads/ec22.pem ec2-user@3.16.128.33 "/tmp/export_var"
  
