@@ -5,4 +5,4 @@ export BUILD_TAG=$(sed -n '2p' /tmp/.auth)
 export pass=$(sed -n '3p' /tmp/.auth)
 
 docker login -u praful1997 -p$pass
-docker-compose -f docker-compose-remote.yml up -d
+cd /tmp && docker-compose -f docker-compose-remote.yml up -d
