@@ -5,8 +5,8 @@ echo $BUILD_TAG >> /tmp/.auth
 echo $pass >> /tmp/.auth
 
 WORKSPACE=/var/lib/jenkins/workspace/test
-scp -i /home/praful/Downloads/ec22.pem /tmp/.auth ec2-user@3.16.128.33:/tmp/.auth
-scp -i /home/praful/Downloads/ec22.pem $WORKSPACE/scripts/remote/export_var ec2-user@3.16.128.33:/tmp/export_var
-scp -i /home/praful/Downloads/ec22.pem $WORKSPACE/docker-compose-remote.yml ec2-user@3.16.128.33:/tmp/docker-compose-remote.yml
-ssh -i /home/praful/Downloads/ec22.pem ec2-user@3.16.128.33 "/tmp/export_var"
+scp -i /home/praful/Downloads/ec22.pem /tmp/.auth ec2-user@3.141.9.22:/tmp/.auth
+scp -i /home/praful/Downloads/ec22.pem $WORKSPACE/scripts/remote/export_var ec2-user@3.141.9.22:/tmp/export_var
+scp -i /home/praful/Downloads/ec22.pem $WORKSPACE/docker-compose-remote.yml ec2-user@3.141.9.22:/tmp/docker-compose-remote.yml
+ssh -i /home/praful/Downloads/ec22.pem ec2-user@3.141.9.22 "/tmp/export_var"
  
